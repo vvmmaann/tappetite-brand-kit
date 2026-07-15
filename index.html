@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tappetite — Brand Kit</title>
+<meta name="description" content="Брендкит Tappetite: логотип, цвета, шрифты, гайд по Instagram и готовые промты.">
+<link rel="icon" href="logo/app_icon_t.png">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=JetBrains+Mono:wght@400;500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#B5532E; --ink:#1A1F36; --sec:#4A4035; --muted:#8A7A6A;
+    --cream:#FAF6F0; --card:#FFFCF7; --page:#DDD5C7; --line:rgba(26,31,54,.12);
+    --serif:'Bodoni Moda',Georgia,serif; --sans:'Onest',-apple-system,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  section{padding:54px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1}
+  h2{font-size:34px;margin-bottom:6px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  p{margin:10px 0;color:var(--sec)}
+  a{color:var(--accent)}
+  /* hero */
+  .hero{text-align:center;padding:72px 0 46px}
+  .hero .icon{width:96px;height:96px;border-radius:22px;overflow:hidden;display:inline-block;box-shadow:0 12px 30px rgba(90,60,30,.14)}
+  .hero .icon img{width:100%;height:100%;object-fit:cover}
+  .hero h1{font-size:64px;margin:22px 0 6px;letter-spacing:-.01em}
+  .hero .sub{color:var(--muted);font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;padding:13px 26px;border-radius:100px;margin-top:24px}
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+  /* colors */
+  .sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:20px}
+  .chip{border-radius:14px;overflow:hidden;border:1px solid var(--line);cursor:pointer}
+  .chip .c{height:78px}
+  .chip .m{padding:9px 11px;background:var(--card)}
+  .chip .hex{font-family:var(--mono);font-size:12px}
+  .chip .nm{font-size:11px;color:var(--muted)}
+  /* fonts */
+  .font-row{margin:18px 0;padding:18px 0;border-bottom:1px dashed var(--line)}
+  .font-row:last-child{border-bottom:none}
+  .fname{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .fsample-serif{font-family:var(--serif);font-size:44px;margin-top:6px}
+  .fsample-sans{font-family:var(--sans);font-size:24px;margin-top:6px}
+  .fsample-mono{font-family:var(--mono);font-size:16px;letter-spacing:.14em;text-transform:uppercase;margin-top:8px;color:var(--sec)}
+  /* do/dont */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .box h4{font-family:var(--sans);font-weight:600;font-size:14px;margin-bottom:8px}
+  .box.ok h4{color:#3a7a3a}.box.no h4{color:var(--accent)}
+  .box ul{margin:0;padding-left:18px;font-size:14px;color:var(--sec)}
+  .box li{margin:5px 0}
+  /* pillars */
+  .pillar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:12px 0}
+  .pillar b{font-family:var(--serif);font-size:19px;font-weight:600}
+  .pillar .ex{font-style:italic;color:var(--muted);font-size:14px;margin-top:4px}
+  /* prompts */
+  .prompt{position:relative;margin:14px 0}
+  .prompt .lab{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  pre{background:#2b2620;color:#f2ece1;border-radius:12px;padding:16px 44px 16px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.55;white-space:pre-wrap;overflow-x:auto}
+  .copy{position:absolute;top:30px;right:10px;background:rgba(255,255,255,.12);color:#fff;border:none;border-radius:7px;font-family:var(--mono);font-size:11px;padding:5px 9px;cursor:pointer}
+  .copy:active{background:var(--accent)}
+  /* template */
+  .tmpl{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:20px}
+  .tmpl img{width:260px;max-width:100%;border-radius:16px;border:1px solid var(--line);box-shadow:0 12px 30px rgba(90,60,30,.10)}
+  /* downloads */
+  .dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:20px}
+  .dl a{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--ink);font-size:14px}
+  .dl a .ar{margin-left:auto;color:var(--accent);font-family:var(--mono);font-size:12px}
+  footer{text-align:center;padding:44px 0;color:var(--muted);font-size:13px}
+  footer .wm{font-family:var(--serif);font-size:22px;color:var(--ink)}
+  @media(max-width:620px){.cols{grid-template-columns:1fr}.hero h1{font-size:48px}h2{font-size:28px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="icon"><img src="logo/app_icon_t.png" alt="Tappetite"></span>
+  <h1>Brand Kit</h1>
+  <div class="sub">tappetite · для инстаграма и не только</div>
+  <div>
+    <a class="btn" href="https://github.com/vvmmaann/tappetite-brand-kit/archive/refs/heads/main.zip">↓ Скачать весь кит (ZIP)</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="eyebrow">о бренде</div>
+    <h2>Что за настроение</h2>
+    <p>Tappetite — игра про вкус и выбор: тапаешь любимое из пары, в финале
+    получаешь свой типаж. Эстетика — журнальная: спокойный кремовый фон,
+    элегантный serif, один тёплый терракотовый акцент. Не кричим, не пестрим.
+    Умно, но с игрой; про тебя, а не про всех.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">палитра</div>
+    <h2>Цвета</h2>
+    <p>Один акцент (терракота) на кремовом. Не добавляй других ярких цветов —
+    контраст делай светлым и тёмным кремовым. Кликни по цвету, чтобы скопировать hex.</p>
+    <div class="sw" id="sw"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">шрифты · все бесплатные на google fonts</div>
+    <h2>Типографика</h2>
+    <div class="font-row">
+      <div class="fname">Bodoni Moda — логотип и крупные заголовки</div>
+      <div class="fsample-serif">Какой ты на самом деле?</div>
+      <a href="https://fonts.google.com/specimen/Bodoni+Moda" target="_blank">скачать Bodoni Moda →</a>
+    </div>
+    <div class="font-row">
+      <div class="fname">Onest — обычный текст и подписи</div>
+      <div class="fsample-sans">Тапай любимое. Проигравший вылетает. В финале — твой топ-3.</div>
+      <a href="https://fonts.google.com/specimen/Onest" target="_blank">скачать Onest →</a>
+    </div>
+    <div class="font-row">
+      <div class="fname">JetBrains Mono — мелкие подписи капсом</div>
+      <div class="fsample-mono">Твой типаж · раунд 1 из 5</div>
+      <a href="https://fonts.google.com/specimen/JetBrains+Mono" target="_blank">скачать JetBrains Mono →</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">голос</div>
+    <h2>Как писать</h2>
+    <p>Коротко, на «ты», живо — как умная подруга, а не отдел маркетинга. Любопытство
+    и лёгкая провокация выбора: «а ты бы что?», «выбери одно», «какой ты?».</p>
+    <div class="cols">
+      <div class="box ok"><h4>✓ Да</h4><ul>
+        <li>«Пельмени или суши? Выбор говорит о тебе больше, чем кажется.»</li>
+        <li>Тире обычные (-), эмодзи 0-2</li>
+        <li>Русский; английские названия — как есть</li>
+      </ul></div>
+      <div class="box no"><h4>✕ Нет</h4><ul>
+        <li>«Скачайте наше инновационное приложение прямо сейчас!»</li>
+        <li>Пёстрые фоны, много цветов, стоки не в тему</li>
+        <li>Пост без вопроса-выбора (в нём весь смысл)</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">инстаграм · что постить</div>
+    <h2>5 типов постов</h2>
+    <div class="pillar"><b>1. Дилемма «X или Y»</b> — главный, самый вирусный формат.
+      <div class="ex">«Пельмени или суши?» · «Море или горы?» → CTA: пройди турнир, узнай свой типаж.</div></div>
+    <div class="pillar"><b>2. Типаж-тизер</b> — «какой ты».
+      <div class="ex">«Есть те, кто в кризисе кричит. А есть ты - становишься точнее. Какой ты?»</div></div>
+    <div class="pillar"><b>3. Дроп категории</b> — новый турнир.
+      <div class="ex">«Собрали 16 лучших сериалов 90-х. Кто твой №1?»</div></div>
+    <div class="pillar"><b>4. Отметь друга</b> — двигатель охвата.
+      <div class="ex">«Отметь того, кто 100% выберет [вариант]».</div></div>
+    <div class="pillar"><b>5. Закулисье / фаундер</b> — доверие и лицо бренда.</div>
+    <p style="margin-top:16px"><b>Форматы:</b> карусель из дилемм (лучший охват) · один квадрат 1:1 ·
+    Reels (запись прохождения 15-20 сек) · <b>Stories с опросом</b> «X или Y?» — это буквально
+    механика игры, делай почти каждый день.</p>
+    <p><b>Ритм:</b> 3-4 поста/неделю + сторис-опросы. Регулярность важнее количества.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">инстаграм · готовые промты</div>
+    <h2>Промты для своего Claude</h2>
+    <p>Вставляй как есть, меняй тему в [скобках]. Claude выдаст текст в нашем голосе.</p>
+
+    <div class="prompt"><div class="lab">1 · подпись к посту</div><button class="copy">копировать</button><pre>Ты пишешь подпись для Instagram игры Tappetite (турниры на вкус: тапаешь любимое из пары, в финале получаешь свой типаж). Голос: коротко, на «ты», живо, как умная подруга, с любопытством и лёгкой провокацией выбора. Не рекламно. Тире обычные (-), не длинные. Эмодзи 0-2.
+Тема поста: [море или горы].
+Дай: 3 варианта подписи (по 1-2 предложения) + 6 хэштегов (половина на русском).</pre></div>
+
+    <div class="prompt"><div class="lab">2 · дилеммы для карусели</div><button class="copy">копировать</button><pre>Придумай 5 дилемм «X или Y» на тему [еда] для карусели Instagram игры Tappetite. Каждая - два реальных, узнаваемых варианта, между которыми реально сложно выбрать. Формат: «Вариант A  или  Вариант B» + одна короткая цепляющая строка снизу в стиле «выбор говорит о тебе». Русский.</pre></div>
+
+    <div class="prompt"><div class="lab">3 · тизер типажа</div><button class="copy">копировать</button><pre>Напиши тизер-типаж для поста Tappetite. Дай метафорическое имя архетипа (1-3 слова, образ, не термин) + 2 коротких предложения на «ты», описывающих человека этого типа, с финальным вопросом «какой ты?». Журнальный тон.
+Тема: [люди, которые в хаосе становятся спокойнее]. Русский.</pre></div>
+
+    <div class="prompt"><div class="lab">4 · идея картинки</div><button class="copy">копировать</button><pre>Опиши визуал поста Instagram 1:1 в стиле бренда Tappetite: фон кремовый #FAF6F0, один терракотовый акцент #B5532E, текст тёмный сине-графит #1A1F36 (не чёрный); крупный serif-заголовок (Bodoni Moda), мелкая подпись КАПСОМ вразрядку моноширинным (JetBrains Mono); много воздуха, минимализм, журнальная эстетика, без пестроты и градиентов.
+Контент: две карточки-варианта «[Кофе]» и «[Чай]», между ними «или», сверху капс «ЧТО ВЫБЕРЕШЬ», снизу маленький вордмарк «tappetite».</pre></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">шаблон</div>
+    <h2>Готовый пост 1:1</h2>
+    <p>Открой шаблон, поменяй два слова, сделай скриншот квадрата — стиль уже зашит,
+    промахнуться нельзя.</p>
+    <div class="tmpl">
+      <img src="templates/example_output.png" alt="пример поста">
+      <div>
+        <a class="btn" href="templates/ig_post_square.html" target="_blank">Открыть шаблон →</a><br>
+        <a class="btn ghost" href="templates/ig_post_square.html" download>↓ Скачать HTML</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">скачать</div>
+    <h2>Файлы</h2>
+    <div class="dl">
+      <a href="logo/wordmark_serif.png" download>Вордмарк «tappetite» <span class="ar">PNG ↓</span></a>
+      <a href="logo/app_icon_t.png" download>Иконка «t» (аватар) <span class="ar">PNG ↓</span></a>
+      <a href="logo/mark_circle_1.png" download>Знак «①» <span class="ar">PNG ↓</span></a>
+      <a href="logo/og-default.png" download>Широкая карточка <span class="ar">PNG ↓</span></a>
+      <a href="colors/palette.png" download>Палитра (картинка) <span class="ar">PNG ↓</span></a>
+      <a href="colors/palette.txt" download>Палитра (hex) <span class="ar">TXT ↓</span></a>
+      <a href="screenshots/03_battle.png" download>Скрин: дуэль <span class="ar">PNG ↓</span></a>
+      <a href="screenshots/06_result.png" download>Скрин: результат <span class="ar">PNG ↓</span></a>
+      <a href="templates/ig_post_square.html" download>Шаблон поста <span class="ar">HTML ↓</span></a>
+      <a href="https://github.com/vvmmaann/tappetite-brand-kit/archive/refs/heads/main.zip">Весь кит одним архивом <span class="ar">ZIP ↓</span></a>
+    </div>
+    <p style="margin-top:18px">Подробные текстовые версии: <a href="BRAND_GUIDE.md" download>BRAND_GUIDE.md</a> ·
+    <a href="INSTAGRAM_PLAYBOOK.md" download>INSTAGRAM_PLAYBOOK.md</a></p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wm">tappetite</div>
+  <div style="margin-top:6px">игра · isverifiedby.me</div>
+</footer>
+
+<script>
+  // palette swatches
+  var COLORS=[["#B5532E","Акцент"],["#1A1F36","Чернила"],["#8A7A6A","Приглушённый"],
+    ["#FAF6F0","Фон"],["#FFFCF7","Карточка"],["#DDD5C7","Плотный кремовый"]];
+  var sw=document.getElementById('sw');
+  COLORS.forEach(function(c){
+    var el=document.createElement('div'); el.className='chip';
+    var dark = c[0].toLowerCase()==='#1a1f36';
+    el.innerHTML='<div class="c" style="background:'+c[0]+(c[0].toUpperCase()==='#FFFCF7'?';box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)':'')+'"></div>'+
+      '<div class="m"><div class="hex">'+c[0].toUpperCase()+'</div><div class="nm">'+c[1]+'</div></div>';
+    el.onclick=function(){ navigator.clipboard && navigator.clipboard.writeText(c[0].toUpperCase());
+      var h=el.querySelector('.hex'), t=h.textContent; h.textContent='скопировано'; setTimeout(function(){h.textContent=t;},900); };
+    sw.appendChild(el);
+  });
+  // copy prompt buttons
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.onclick=function(){ var pre=b.parentNode.querySelector('pre');
+      navigator.clipboard && navigator.clipboard.writeText(pre.textContent);
+      var t=b.textContent; b.textContent='✓ скопировано'; setTimeout(function(){b.textContent=t;},1200); };
+  });
+</script>
+</body>
+</html>
