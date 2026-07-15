@@ -1,56 +1,231 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tappetite — шаблон поста 1:1</title>
 <!--
-  КАК ПОЛЬЗОВАТЬСЯ:
+  КАК ПОЛЬЗОВАТЬСЯ (ничего кодить не нужно):
   1. Открой этот файл в браузере (двойной клик).
-  2. Поменяй текст ниже в двух местах, помеченных  <!== МЕНЯЙ ==>.
-  3. Сделай скриншот квадрата (или Ctrl/Cmd+P → Сохранить как PDF → обрежь).
-     Размер холста уже 1080x1080 — идеально для Instagram 1:1.
+  2. Кликни прямо по тексту на картинке и печатай свой — меняются подпись сверху
+     и два варианта («Кофе» / «Чай»).
+  3. Нажми «Скачать PNG» — сохранится готовый квадрат 1080x1080 для Instagram.
+     (Хочешь ночную сторис — переключи тему на тёмную.)
 -->
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=JetBrains+Mono:wght@500&family=Onest:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500;1,6..96,600&family=JetBrains+Mono:wght@500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:#cfc6b4; display:flex; align-items:center; justify-content:center; min-height:100vh; }
-  .card {
-    width:1080px; height:1080px; background:#FAF6F0; position:relative;
-    font-family:'Bodoni Moda', Georgia, serif; color:#1A1F36; overflow:hidden;
+  :root{
+    --bg:#FAF6F0; --card:#FFFCF7; --ink:#1A1F36; --accent:#B5532E; --muted:#8A7A6A; --page:#DDD5C7;
   }
-  .eyebrow {
+  :root[data-theme="dark"]{
+    --bg:#1F1B16; --card:#2A2420; --ink:#F5EFE7; --accent:#D4885C; --muted:#B5A695; --page:#141210;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--page); color:var(--ink);
+    font-family:'Onest',system-ui,sans-serif;
+    display:flex; flex-direction:column; align-items:center;
+    min-height:100vh; padding:18px 14px 40px;
+  }
+
+  /* ── панель управления (её нет на самой картинке) ── */
+  .bar{
+    width:100%; max-width:1080px; display:flex; flex-wrap:wrap; gap:12px;
+    align-items:center; justify-content:space-between; margin-bottom:20px;
+  }
+  .bar .hint{ font-size:15px; color:var(--ink); opacity:.8; line-height:1.4; max-width:520px }
+  .bar .hint b{ color:var(--accent) }
+  .controls{ display:flex; gap:10px; flex-wrap:wrap }
+  button.ui{
+    font-family:'Onest',sans-serif; font-size:15px; font-weight:600; cursor:pointer;
+    border:1.5px solid var(--accent); border-radius:12px; padding:12px 18px; transition:.15s;
+  }
+  button.primary{ background:var(--accent); color:#fff }
+  button.primary:hover{ filter:brightness(1.06) }
+  button.ghost{ background:transparent; color:var(--accent) }
+  button.ghost:hover{ background:color-mix(in srgb, var(--accent) 10%, transparent) }
+
+  /* ── холст поста ── */
+  .stage{ width:100%; display:flex; justify-content:center }
+  .scaler{ transform-origin:top center }
+  .card{
+    width:1080px; height:1080px; background:var(--bg); position:relative;
+    font-family:'Bodoni Moda',Georgia,serif; color:var(--ink); overflow:hidden;
+    border-radius:8px; box-shadow:0 24px 60px rgba(0,0,0,.16);
+  }
+  .eyebrow{
     position:absolute; top:96px; left:0; width:100%; text-align:center;
-    font-family:'JetBrains Mono', monospace; font-size:26px; letter-spacing:0.28em;
-    text-transform:uppercase; color:#8A7A6A;
+    font-family:'JetBrains Mono',monospace; font-size:26px; letter-spacing:.28em;
+    text-transform:uppercase; color:var(--muted);
   }
-  .opt {
-    position:absolute; left:110px; width:860px; height:300px; background:#FFFCF7;
+  .opt{
+    position:absolute; left:110px; width:860px; height:300px; background:var(--card);
     border-radius:36px; display:flex; align-items:center; justify-content:center;
     box-shadow:0 18px 44px rgba(90,60,30,.10); border:3px solid transparent;
   }
-  .optA { top:250px; border-color:#B5532E; }   /* акцент на верхней — «твой выбор» */
-  .optB { top:640px; }
-  .opt .nm { font-size:96px; font-weight:600; padding:0 40px; text-align:center; }
-  .orr {
+  :root[data-theme="dark"] .opt{ box-shadow:0 18px 44px rgba(0,0,0,.30) }
+  .optA{ top:250px; border-color:var(--accent) }
+  .optB{ top:640px }
+  .opt .nm{ font-size:96px; font-weight:600; padding:0 40px; text-align:center; line-height:1.05 }
+  .orr{
     position:absolute; top:588px; width:100%; text-align:center;
-    font-style:italic; font-size:40px; color:#8A7A6A;
+    font-style:italic; font-size:40px; color:var(--muted);
   }
-  .foot {
+  .foot{
     position:absolute; bottom:70px; left:0; width:100%; text-align:center;
-    font-size:34px; letter-spacing:.01em; color:#1A1F36;
+    font-size:34px; letter-spacing:.01em; color:var(--ink);
   }
-  .foot .dot { color:#B5532E; }
+  .foot .dot{ color:var(--accent) }
+
+  /* редактируемые места: подсказка что можно кликать и печатать (только на экране) */
+  [contenteditable]{ outline:none; cursor:text; border-radius:10px; transition:box-shadow .15s }
+  [contenteditable]:hover{ box-shadow:0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent) }
+  [contenteditable]:focus{ box-shadow:0 0 0 2px var(--accent) }
+
+  @media (max-width:600px){ .bar .hint{ order:2; width:100% } }
 </style>
 </head>
 <body>
-  <div class="card">
-    <div class="eyebrow">Что выберешь</div>          <!-- <!== МЕНЯЙ (подпись-капс) -->
 
-    <div class="opt optA"><div class="nm">Кофе</div></div>   <!-- <!== МЕНЯЙ (вариант A) -->
-    <div class="orr">или</div>
-    <div class="opt optB"><div class="nm">Чай</div></div>    <!-- <!== МЕНЯЙ (вариант B) -->
-
-    <div class="foot">tappetite <span class="dot">·</span> узнай свой типаж</div>
+  <div class="bar">
+    <div class="hint">Кликни по любому тексту на квадрате и печатай свой. Потом <b>«Скачать PNG»</b> — получишь готовый пост 1080×1080.</div>
+    <div class="controls">
+      <button class="ui ghost" id="themeBtn" title="Светлая / тёмная">◐ Тема</button>
+      <button class="ui primary" id="dlBtn">↓ Скачать PNG</button>
+    </div>
   </div>
+
+  <div class="stage">
+    <div class="scaler" id="scaler">
+      <div class="card" id="card">
+        <div class="eyebrow"  contenteditable="true" spellcheck="false">Что выберешь</div>
+
+        <div class="opt optA"><div class="nm" contenteditable="true" spellcheck="false">Кофе</div></div>
+        <div class="orr">или</div>
+        <div class="opt optB"><div class="nm" contenteditable="true" spellcheck="false">Чай</div></div>
+
+        <div class="foot">tappetite <span class="dot">·</span> узнай свой типаж</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var card = document.getElementById('card');
+  var scaler = document.getElementById('scaler');
+
+  // ── тема ──
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    root.setAttribute('data-theme', root.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
+  });
+
+  // ── вставка без форматирования + без переносов строк ──
+  document.querySelectorAll('[contenteditable]').forEach(function(el){
+    el.addEventListener('paste', function(e){
+      e.preventDefault();
+      var t = (e.clipboardData||window.clipboardData).getData('text').replace(/\s+/g,' ').trim();
+      document.execCommand('insertText', false, t);
+    });
+    el.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); el.blur(); } });
+  });
+
+  // ── подгон масштаба под ширину экрана ──
+  function fit(){
+    var avail = Math.min(1080, (document.querySelector('.stage').clientWidth));
+    var s = Math.min(1, avail/1080);
+    scaler.style.transform = 'scale('+s+')';
+    scaler.style.height = (1080*s)+'px';
+    scaler.style.width  = '1080px';
+  }
+  window.addEventListener('resize', fit); fit();
+
+  // ── темы для PNG (точные значения бренда) ──
+  var THEMES = {
+    light:{ bg:'#FAF6F0', card:'#FFFCF7', ink:'#1A1F36', accent:'#B5532E', muted:'#8A7A6A', shadow:'rgba(90,60,30,0.10)' },
+    dark: { bg:'#1F1B16', card:'#2A2420', ink:'#F5EFE7', accent:'#D4885C', muted:'#B5A695', shadow:'rgba(0,0,0,0.35)'   }
+  };
+  function txt(sel){ return (document.querySelector(sel).textContent||'').replace(/\s+/g,' ').trim(); }
+
+  function roundRect(ctx,x,y,w,h,r){
+    if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(x,y,w,h,r); return; }
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+  }
+  // подгон размера шрифта, чтобы длинное слово влезло в карточку
+  function fitFont(ctx, text, weight, maxW){
+    var size = 96;
+    while(size>44){
+      ctx.font = weight+' '+size+'px "Bodoni Moda"';
+      if(ctx.measureText(text).width <= maxW) break;
+      size -= 4;
+    }
+    return size;
+  }
+
+  async function draw(){
+    var T = THEMES[root.getAttribute('data-theme')==='dark'?'dark':'light'];
+    var cv = document.createElement('canvas'); cv.width=1080; cv.height=1080;
+    var ctx = cv.getContext('2d');
+
+    // фон
+    ctx.fillStyle = T.bg; ctx.fillRect(0,0,1080,1080);
+
+    // карточки
+    [[250,true],[640,false]].forEach(function(o){
+      var y=o[0], accent=o[1];
+      ctx.save();
+      ctx.shadowColor=T.shadow; ctx.shadowBlur=44; ctx.shadowOffsetY=18;
+      roundRect(ctx,110,y,860,300,36); ctx.fillStyle=T.card; ctx.fill();
+      ctx.restore();
+      if(accent){ roundRect(ctx,111.5,y+1.5,857,297,35); ctx.lineWidth=3; ctx.strokeStyle=T.accent; ctx.stroke(); }
+    });
+
+    // подпись-капс сверху
+    ctx.fillStyle=T.muted; ctx.textAlign='center'; ctx.textBaseline='top';
+    ctx.font='500 26px "JetBrains Mono"'; if('letterSpacing' in ctx) ctx.letterSpacing='7px';
+    ctx.fillText(txt('.eyebrow').toUpperCase(), 540, 96);
+    if('letterSpacing' in ctx) ctx.letterSpacing='0px';
+
+    // варианты
+    ctx.textBaseline='middle'; ctx.fillStyle=T.ink;
+    var a=txt('.optA .nm'), b=txt('.optB .nm');
+    var sa=fitFont(ctx,a,'600',780); ctx.font='600 '+sa+'px "Bodoni Moda"'; ctx.fillText(a,540,400);
+    var sb=fitFont(ctx,b,'600',780); ctx.font='600 '+sb+'px "Bodoni Moda"'; ctx.fillText(b,540,790);
+
+    // «или»
+    ctx.fillStyle=T.muted; ctx.font='italic 500 40px "Bodoni Moda"'; ctx.fillText('или',540,596);
+
+    // футер
+    ctx.textBaseline='bottom';
+    ctx.font='500 34px "Bodoni Moda"';
+    var pre='tappetite  ', dot='·', post='  узнай свой типаж';
+    var wPre=ctx.measureText(pre).width, wDot=ctx.measureText(dot).width, wPost=ctx.measureText(post).width;
+    var total=wPre+wDot+wPost, x0=540-total/2; ctx.textAlign='left';
+    ctx.fillStyle=T.ink;    ctx.fillText(pre,  x0,1012);
+    ctx.fillStyle=T.accent; ctx.fillText(dot,  x0+wPre,1012);
+    ctx.fillStyle=T.ink;    ctx.fillText(post, x0+wPre+wDot,1012);
+
+    return cv;
+  }
+
+  document.getElementById('dlBtn').addEventListener('click', async function(){
+    var btn=this, old=btn.textContent; btn.textContent='…'; btn.disabled=true;
+    try{
+      await document.fonts.load('600 96px "Bodoni Moda"');
+      await document.fonts.load('italic 500 40px "Bodoni Moda"');
+      await document.fonts.load('500 34px "Bodoni Moda"');
+      await document.fonts.load('500 26px "JetBrains Mono"');
+      await document.fonts.ready;
+      var cv=await draw();
+      var a=document.createElement('a');
+      a.download='tappetite-post.png'; a.href=cv.toDataURL('image/png'); a.click();
+    }catch(err){ alert('Не получилось собрать PNG: '+err+'\nМожно просто сделать скриншот квадрата.'); }
+    finally{ btn.textContent=old; btn.disabled=false; }
+  });
+})();
+</script>
 </body>
 </html>
